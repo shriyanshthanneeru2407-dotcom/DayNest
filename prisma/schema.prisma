@@ -59,18 +59,18 @@ model VerificationToken {
 }
 
 model Task {
-  id          String    @id @default(cuid())
-  userId      String
-  title       String
-  notes       String?
-  date        String?   // YYYY-MM-DD
-  time        String?   // HH:MM
-  priority    String    @default("medium") // low | medium | high
-  category    String    @default("Personal")
-  completed   Boolean   @default(false)
-  notified    Boolean   @default(false)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  notes     String?
+  date      String?
+  time      String?
+  priority  String   @default("medium")
+  category  String   @default("Personal")
+  completed Boolean  @default(false)
+  notified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
