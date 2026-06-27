@@ -15,6 +15,8 @@ A calm, cozy to-do list and calendar app designed to feel like a warm journal. S
 You can access the live web deployment here:
 **👉 [https://daynest-nest.vercel.app](https://daynest-nest.vercel.app)**
 
+> **No login required!** Click "Try as Guest" to use the full app instantly. Tasks are saved in your browser. Sign in with Google to unlock Gmail & SMS reminders.
+
 ---
 
 ## ✨ Features
