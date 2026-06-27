@@ -1,7 +1,7 @@
 'use client'
-import { useState, useCallback } from 'react'
-import { useSession } from 'next-auth/react'
-import TaskCard    from '@/components/TaskCard'
+import { useState } from 'react'
+import { useSession, signIn } from 'next-auth/react'
+import TaskCard     from '@/components/TaskCard'
 import ProgressRing from '@/components/ProgressRing'
 import AddTaskModal from '@/components/AddTaskModal'
 import BottomNav    from '@/components/BottomNav'
@@ -40,22 +40,60 @@ export default function TodayPage() {
     '💧 Water': false, '🧘 Meditate': false, '📖 Read': false,
   })
   const [musicOn, setMusicOn] = useState(false)
+  const [dismissGuest, setDismissGuest] = useState(false)
   const quote = QUOTES[new Date().getDay() % QUOTES.length]
 
-  const { tasks, loading, refresh, toggle, remove } = useTasks(todayStr())
+  const { tasks, loading, refresh, toggle, remove, addGuestTask, isGuest } = useTasks(todayStr())
   const done  = tasks.filter(t => t.completed).length
   const total = tasks.length
 
+  const userName = session?.user?.name?.split(' ')[0] || 'there'
+
   return (
     <div className="app-shell">
+      {/* Guest sign-in banner */}
+      {isGuest && !dismissGuest && (
+        <div style={{
+          margin: '12px 16px 0',
+          padding: '12px 16px',
+          background: 'linear-gradient(135deg, #A68A72, #C98B73)',
+          borderRadius: 'var(--radius-md)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 10,
+          color: 'white',
+        }}>
+          <span style={{ fontSize: 20 }}>🪺</span>
+          <div style={{ flex: 1, fontSize: 12, fontWeight: 600, lineHeight: 1.5 }}>
+            You're in guest mode. Tasks saved in your browser.
+          </div>
+          <button
+            id="btn-signin-banner"
+            onClick={() => signIn('google', { callbackUrl: '/today' })}
+            style={{
+              background: 'rgba(255,255,255,0.25)', border: 'none',
+              borderRadius: 8, color: 'white', fontFamily: 'Nunito, sans-serif',
+              fontSize: 11, fontWeight: 700, padding: '5px 10px',
+              cursor: 'pointer', whiteSpace: 'nowrap',
+            }}
+          >
+            Sign In
+          </button>
+          <button onClick={() => setDismissGuest(true)}
+            style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', cursor: 'pointer', fontSize: 14 }}>
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* Greeting */}
       <div className="greeting-section">
-        <h1>{getGreeting()}, {session?.user?.name?.split(' ')[0] || 'friend'}</h1>
+        <h1>{getGreeting()}{!isGuest ? `, ${userName}` : ''}</h1>
         <p className="greeting-date">{formatDate(new Date())}</p>
         <p className="greeting-quote">"{quote}"</p>
       </div>
 
-      {/* Phone number banner */}
+      {/* Phone number banner (signed-in only) */}
       {session && !(session.user as any).phoneNumber && <PhoneBanner />}
 
       {/* Progress Ring */}
@@ -123,6 +161,7 @@ export default function TodayPage() {
           defaultDate={todayStr()}
           onClose={() => setShowModal(false)}
           onSaved={() => { setShowModal(false); refresh() }}
+          onGuestAdd={isGuest ? (task) => { addGuestTask(task); setShowModal(false) } : undefined}
         />
       )}
 

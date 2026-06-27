@@ -8,9 +8,11 @@ interface Props {
   onClose: () => void
   onSaved: () => void
   defaultDate?: string
+  /** If provided, saves guest task via localStorage instead of API */
+  onGuestAdd?: (task: { title: string; notes: string; date: string; time: string; priority: string; category: string; completed: boolean }) => void
 }
 
-export default function AddTaskModal({ onClose, onSaved, defaultDate }: Props) {
+export default function AddTaskModal({ onClose, onSaved, defaultDate, onGuestAdd }: Props) {
   const [title,    setTitle]    = useState('')
   const [notes,    setNotes]    = useState('')
   const [date,     setDate]     = useState(defaultDate || '')
@@ -24,6 +26,14 @@ export default function AddTaskModal({ onClose, onSaved, defaultDate }: Props) {
     e.preventDefault()
     if (!title.trim()) { setError('Please add a title 🌿'); return }
     setSaving(true)
+
+    // Guest mode: no API call
+    if (onGuestAdd) {
+      onGuestAdd({ title, notes, date, time, priority, category, completed: false })
+      onSaved()
+      return
+    }
+
     try {
       const res = await fetch('/api/tasks', {
         method: 'POST',
