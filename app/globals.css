@@ -501,3 +501,300 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--beige-dark); border-radius: 2px; }
+
+/* ── Main Brand Header ─────────────────────────────────────────── */
+.main-brand-header {
+  padding: 24px 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 5px 14px;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-badge-icon {
+  font-size: 18px;
+}
+
+.brand-badge-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+.brand-main-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--brown);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ── About DayNest Section ──────────────────────────────────────── */
+.about-nest-section {
+  margin: 16px 16px 0;
+  padding: 18px 20px;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-nest-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.about-nest-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.about-nest-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.about-nest-chip {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--beige);
+  padding: 3px 9px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.about-nest-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.about-nest-desc {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.about-pillar-card {
+  background: var(--beige);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.about-pillar-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.about-pillar-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+}
+
+.about-pillar-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── Mindful Energy / Mood Chips ────────────────────────────────── */
+.mood-section {
+  padding: 14px 16px 0;
+}
+
+.mood-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.mood-chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.mood-chips::-webkit-scrollbar { display: none; }
+
+.mood-chip {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.mood-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.mood-chip.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ── App Footer ─────────────────────────────────────────────────── */
+.app-footer {
+  margin-top: 36px;
+  padding: 28px 20px 48px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  text-align: center;
+  box-shadow: 0 -2px 12px rgba(90, 70, 50, 0.04);
+}
+
+.footer-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.footer-ornament-icon {
+  font-size: 16px;
+}
+
+.footer-ornament-dot {
+  font-size: 10px;
+  color: var(--brown);
+  opacity: 0.6;
+}
+
+.footer-brand {
+  margin-bottom: 18px;
+}
+
+.footer-brand-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+.footer-credit-card {
+  background: var(--beige);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin: 0 auto 18px;
+  max-width: 380px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+}
+
+.footer-credit-card:hover {
+  transform: translateY(-1px);
+}
+
+.footer-credit-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--brown);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.footer-author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+.footer-author-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+.footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.footer-rights {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.footer-motto {
+  font-size: 11px;
+  opacity: 0.8;
+}
+

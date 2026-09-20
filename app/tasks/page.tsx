@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react'
 import TaskCard     from '@/components/TaskCard'
 import AddTaskModal from '@/components/AddTaskModal'
 import BottomNav    from '@/components/BottomNav'
+import AppFooter    from '@/components/AppFooter'
 import useTasks     from '@/hooks/useTasks'
 
 const CATS = ['All', 'Personal', 'Work', 'Health', 'Study', 'Home']
@@ -84,6 +85,8 @@ export default function TasksPage() {
           onGuestAdd={isGuest ? (task) => { addGuestTask(task); setShowModal(false) } : undefined}
         />
       )}
+
+      <AppFooter />
 
       <BottomNav />
     </div>

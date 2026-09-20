@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import BottomNav    from '@/components/BottomNav'
+import AppFooter    from '@/components/AppFooter'
 import AddTaskModal from '@/components/AddTaskModal'
 import TaskCard     from '@/components/TaskCard'
 import useTasks     from '@/hooks/useTasks'
@@ -124,6 +125,8 @@ export default function CalendarPage() {
           }}
         />
       )}
+
+      <AppFooter />
 
       <BottomNav />
     </div>

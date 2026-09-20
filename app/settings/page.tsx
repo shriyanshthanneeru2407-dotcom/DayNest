@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 import BottomNav from '@/components/BottomNav'
+import AppFooter from '@/components/AppFooter'
 
 const ACCENTS = [
   { name: 'Terracotta', value: '#C98B73' },
@@ -171,6 +172,8 @@ export default function SettingsPage() {
           <span style={{ color: 'var(--text-muted)' }}>›</span>
         </div>
       </div>
+
+      <AppFooter />
 
       <BottomNav />
     </div>
